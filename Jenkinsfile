@@ -4,6 +4,13 @@ pipeline {
     stages {
 
         stage("Build jar & copy dependencies") {
+
+            agent {
+                docker {
+                    image "maven:3-alpine"
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
                 sh "mvn clean package dependency:copy-dependencies -DskipTests -DoutputDirectory=%cd%/target/lib"
             }
