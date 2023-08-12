@@ -28,7 +28,8 @@ ADD healthcheck.sh healthcheck.sh
 # $HUB_HOST=localhost
 # $MODULE -> testsuite.xml
 
-ENTRYPOINT  tr -d '\15' < healthcheck.sh > healthcheck_eol.sh && \
+ENTRYPOINT  chmod 777 /home/ubuntu/parabank && \
+            tr -d '\15' < healthcheck.sh > healthcheck_eol.sh && \
             cp healthcheck_eol.sh healthcheck.sh  && \
             chmod 755 healthcheck.sh && \
             ./healthcheck.sh
