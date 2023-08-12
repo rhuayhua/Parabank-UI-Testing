@@ -11,8 +11,9 @@ pipeline {
 
         stage("Build image") {
             steps {
-                sh "pwd"
-                def dockerImage = docker.build("rhuayhua/selenium-parabank:latest")
+                script {
+                     def dockerImage = docker.build("rhuayhua/selenium-parabank:latest")
+                }
             }
         }
 
