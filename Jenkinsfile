@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKERHUB_CREDENTIAL = credentials('dockerhub_cred')
-    }
-
     stages {
 
         stage("Build jar & copy dependencies") {
@@ -19,13 +15,15 @@ pipeline {
             }
         }
 
-//         stage("Push image") {
-//             steps {
-//                 withRegistry([usernamePassword(credentialsId:'dockerhub_cred', passwordVariable:'pass', usernameVariable:'user')]) {
-//                      sh "sudo docker push rhuayhua/selenium-parabank:latest"
-//                 }
-//             }
-//         }
+        stage("Push image") {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId:'dockerhub_cred') {
+                         sh "sudo docker push rhuayhua/selenium-parabank:latest"
+                    }
+                }
+            }
+        }
     }
 
 }
