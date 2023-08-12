@@ -12,7 +12,7 @@ pipeline {
         stage("Build image") {
             steps {
                 sh "pwd"
-                sh "docker build -t=rhuayhua/selenium-parabank ."
+                sh "sudo docker build -t=rhuayhua/selenium-parabank ."
             }
         }
 
