@@ -5,7 +5,7 @@ pipeline {
 
         stage("Build jar & copy dependencies") {
             steps {
-                sh "mvn clean package dependency:copy-dependencies -DskipTests -DoutputDirectory=%cd%/target/lib"
+                sh "mvn clean package dependency:copy-dependencies -DskipTests -DoutputDirectory=target/lib"
             }
         }
 
