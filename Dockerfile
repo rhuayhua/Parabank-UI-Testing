@@ -28,4 +28,4 @@ ADD healthcheck.sh healthcheck.sh
 # $HUB_HOST=localhost
 # $MODULE -> testsuite.xml
 
-ENTRYPOINT ./healthcheck.sh
+ENTRYPOINT ls -lrt healthcheck.sh
