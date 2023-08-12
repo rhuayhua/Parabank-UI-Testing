@@ -18,7 +18,9 @@ pipeline {
 
         stage("Push image") {
             steps {
-                sh "sudo docker push rhuayhua/selenium-parabank:latest"
+                withCredentials([usernamePassword(credentialsId:'dockerhub_cred', passwordVariable:'pass', usernameVariable:'user')]) {
+                     sh "sudo docker push rhuayhua/selenium-parabank:latest"
+                }
             }
         }
     }
