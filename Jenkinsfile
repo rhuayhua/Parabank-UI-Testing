@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIAL = credentials('dockerhub_cred')
+    }
+
     stages {
 
         stage("Build jar & copy dependencies") {
@@ -11,9 +15,7 @@ pipeline {
 
         stage("Build image") {
             steps {
-                script {
-                     def dockerImage = docker.build("rhuayhua/selenium-parabank:latest")
-                }
+               sh "sudo docker build -t=rhuayhua/selenium-parabank ."
             }
         }
 
