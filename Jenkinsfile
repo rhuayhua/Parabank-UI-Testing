@@ -12,7 +12,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    app = docker.build("rhuayhua/selenium-parabank:latest")
+                    app = docker.build("rhuayhua/selenium-parabank")
                 }
             }
         }
