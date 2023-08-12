@@ -5,12 +5,6 @@ pipeline {
 
         stage("Build jar & copy dependencies") {
 
-            agent {
-                docker {
-                    image "maven:3-alpine"
-                    args '-v /root/.m2:/root/.m2'
-                }
-            }
             steps {
                 sh "mvn clean package dependency:copy-dependencies -DskipTests -DoutputDirectory=%cd%/target/lib"
             }
@@ -18,9 +12,8 @@ pipeline {
 
         stage("Build image") {
             steps {
-                script {
-                    app = docker.build("rhuayhua/selenium-parabank")
-                }
+                sh "pwd"
+                sh "docker build -t=rhuayhua/selenium-parabank ."
             }
         }
 
