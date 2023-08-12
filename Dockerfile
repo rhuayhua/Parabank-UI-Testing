@@ -7,7 +7,7 @@ RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu
 USER ubuntu
 
 # workspace
-WORKDIR /home/parabank
+WORKDIR /home/ubuntu/parabank
 
 # copy .jar under target from host to image
 ADD target/selenium-docker-tests.jar selenium-docker-tests.jar
