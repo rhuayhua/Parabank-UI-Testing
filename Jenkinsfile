@@ -12,17 +12,17 @@ pipeline {
         stage("Build image") {
             steps {
                 sh "pwd"
-                sh "sudo docker build -t=rhuayhua/selenium-parabank ."
+                def dockerImage = docker.build("rhuayhua/selenium-parabank:latest")
             }
         }
 
-        stage("Push image") {
-            steps {
-                withCredentials([usernamePassword(credentialsId:'dockerhub_cred', passwordVariable:'pass', usernameVariable:'user')]) {
-                     sh "sudo docker push rhuayhua/selenium-parabank:latest"
-                }
-            }
-        }
+//         stage("Push image") {
+//             steps {
+//                 withRegistry([usernamePassword(credentialsId:'dockerhub_cred', passwordVariable:'pass', usernameVariable:'user')]) {
+//                      sh "sudo docker push rhuayhua/selenium-parabank:latest"
+//                 }
+//             }
+//         }
     }
 
 }
