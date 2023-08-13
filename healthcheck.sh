@@ -19,7 +19,7 @@ do
 done
 
 # start the java command (same command as entrypoint in image)
-java  -classpath "selenium-docker.jar:selenium-docker-tests.jar:lib/*" \
+java -javaagent:"lib/aspectjweaver-1.9.4.jar" -classpath "selenium-docker.jar:selenium-docker-tests.jar:lib/*" \
      -DExecutionType=$ExecutionType \
      -DBrowserName=$BrowserName \
      -Dgroups=$groups \
