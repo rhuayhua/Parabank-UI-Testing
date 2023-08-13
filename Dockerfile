@@ -1,7 +1,7 @@
 FROM azul/zulu-openjdk-alpine:11
 
 # run - to install packages for healthcheck
-RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu
+RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu && mkdir -p /home/ubuntu/parabank && chown ubuntu /home/ubuntu/parabank
 
 # set user
 USER ubuntu
