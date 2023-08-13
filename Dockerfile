@@ -4,7 +4,7 @@ FROM azul/zulu-openjdk-alpine:11
 RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu
 
 # set user
-USER ubuntu
+#USER ubuntu
 
 # workspace
 WORKDIR /home/ubuntu/parabank
