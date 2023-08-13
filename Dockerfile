@@ -1,7 +1,7 @@
 FROM azul/zulu-openjdk-alpine:11
 
 # run - to install packages for healthcheck
-RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu && mkdir -p /home/ubuntu/parabank && sudo chown -R ubuntu /home/ubuntu/parabank
+RUN apk update && apk add curl  && apk add jq && adduser -D ubuntu
 
 # set user
 USER ubuntu
@@ -28,4 +28,5 @@ ADD healthcheck.sh healthcheck.sh
 # $HUB_HOST=localhost
 # $MODULE -> testsuite.xml
 
-ENTRYPOINT ls -lrt healthcheck.sh
+USER root
+ENTRYPOINT ./healthcheck.sh
