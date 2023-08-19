@@ -25,6 +25,7 @@ public class BasePage extends Listener {
 
     public void setDriverToNull() {
         printDebugMessage("Setting driver to NULL after quitting");
+        driver.set(null);
     }
 
     public void openBrowserAndNavigateToParabank(String executionType, String browserName) throws MalformedURLException {
